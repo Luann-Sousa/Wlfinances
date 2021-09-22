@@ -19,4 +19,10 @@ export default{
     background_color: "#F0F2F5"
 
   },
+
+  fonts :{
+    regular: " Poppins_400Regular",
+    medium: "Poppins_500Medium",
+    bold: "Poppins_700Bold"
+  },
 };

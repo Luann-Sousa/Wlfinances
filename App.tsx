@@ -1,20 +1,30 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import AppLoading from 'expo-app-loading';
+import { ThemeProvider } from 'styled-components';
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins';
+
+import theme from './src/Global/Styles/theme';
 import { Dashboard } from './src/Screens/Dashboard';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-     <Dashboard />
-    </View>
+  const [ fontsLoaded ] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_700Bold,
+  });
+  //fonts false 
+  if(!fontsLoaded){
+    return <AppLoading />
+  };
+  return ( 
+      <ThemeProvider theme={ theme }>
+        <Dashboard />
+      </ThemeProvider>
+   
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};

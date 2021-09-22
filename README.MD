@@ -27,4 +27,14 @@
 
 ## VAMOS COLOCAR UM ESTILO GLOBAL EM NOSSA APLICACAO E SETANDO AS CORES QUE IREMOS UTILIZA NO PROJETO
 
--Site de cores corvert hexadecimal rgb => "https://calculareconverter.com.br/hex-to-rgb/"|"https://www.rapidtables.com/convert/color/hex-to-rgb.html"
+<p>*Ir ate a pasta src criar uma pasta chamada Global que no caso e onde nosso estilos de todas nossa aplicacao vai ficar
+dentro dela cria outra pasta chamada Styles e sim dentro dela ficará seu codigo de configuração de estilo global.</p>
+
+-Site de cores corvert hexadecimal rgb => "https://calculareconverter.com.br/hex-to-rgb/"|"https://www.rapidtables.com/convert/color/hex-to-rgb.html"</br>
+
+## VAMOS COLOCAR FONTES EM NOSSA APLICAÇÃO PONTO MUITO IMPORTANTE.
+
+<p>*Font' s Poppins</p>
+--Onde iremos pegar nossas fonte gratuitamente rsrs [ -> https://fonts.google.com/]
+** expo install expo-font @expo-google-fontes/poppins
+** expo install expo-app-loading => para lidar com carregamento no expo de forma vamos dizer amigavel rs.
