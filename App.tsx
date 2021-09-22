@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Welcome } from './src/Components/Welcome/Welcome';
+import { Dashboard } from './src/Screens/Dashboard';
 
 export default function App() {
   return (
     <View style={styles.container}>
-     <Welcome title="App foi configurado com exito React-Native Bare Workflow com Typescript"/>
+     <Dashboard />
     </View>
   );
 }

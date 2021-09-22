@@ -19,3 +19,10 @@
 - install @typescript/react-native.</br>
 <p></p>
 <p>*Se você ir ate ao seu "tsconfig.json irá perceber que foram adicionados algumas coisas você agora so precisa colaborar indo ate o arquivo e acrecentando uma props seguindo o seguinte valor [stric: true]"</p>
+
+## INTSLANDO DEPEDENCIAS PARA TER UMA OTIMA PRODUTIVIDADE EM NOSSO AMBIEMTE DE DESENVOLVIMENTO.
+
+<p>*Styled-components [ -> yarn add styled-compements | yarn add @types/styled-components] => lib bastante utilizada para estilizar nossas aplicação quanto ela seja mobile or desktop.</p>
+<p>-falando um pouco sobre mais..., essa lib nos dar total liberdade de trabarlamos da mesma forma que trabalhamos desenvolvendo aplição web's , e tabem conseguimos ter um divisão perfeita, e isolar nossos componentes de seus aspecto funcional ou ate msm visual do compoente, conseguimos orgarnizar tudo isso por issa ela e um exelente lib, temos poder de trabalhar com forma dinâminca conseguimos assim acessar propiedades dentro do styled-componet para gente estilizar algum componete que esteja baseado em um estado podemos dizer assim [ -> A logo $Valor tem que ficar vermelha quando usuario estiver logado na aplicação, mais emfim vamos praticar].</p>
+
+--
