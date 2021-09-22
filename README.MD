@@ -25,4 +25,6 @@
 <p>*Styled-components [ -> yarn add styled-compements | yarn add @types/styled-components-react-native] => lib bastante utilizada para estilizar nossas aplicação quanto ela seja mobile or desktop.</p>
 <p>-falando um pouco sobre mais..., essa lib nos dar total liberdade de trabarlamos da mesma forma que trabalhamos desenvolvendo aplição web's , e tabem conseguimos ter um divisão perfeita, e isolar nossos componentes de seus aspecto funcional ou ate msm visual do compoente, conseguimos orgarnizar tudo isso por issa ela e um exelente lib, temos poder de trabalhar com forma dinâminca conseguimos assim acessar propiedades dentro do styled-componet para gente estilizar algum componete que esteja baseado em um estado podemos dizer assim [ -> A logo $Valor tem que ficar vermelha quando usuario estiver logado na aplicação, mais emfim vamos praticar].</p>
 
---
+## VAMOS COLOCAR UM ESTILO GLOBAL EM NOSSA APLICACAO E SETANDO AS CORES QUE IREMOS UTILIZA NO PROJETO
+
+-Site de cores corvert hexadecimal rgb => "https://calculareconverter.com.br/hex-to-rgb/"|"https://www.rapidtables.com/convert/color/hex-to-rgb.html"
