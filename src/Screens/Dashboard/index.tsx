@@ -7,7 +7,7 @@ import {
 export function Dashboard(){
   return(
     <Container>
-      <Title> Hellow, $Valor</Title>
+      
     </Container>
   );
 };
