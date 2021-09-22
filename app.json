@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "wlfinances",
+    "slug": "wlfinances",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "wlfinances"
+}
