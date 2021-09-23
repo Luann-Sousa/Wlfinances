@@ -38,3 +38,11 @@ dentro dela cria outra pasta chamada Styles e sim dentro dela ficará seu codigo
 --Onde iremos pegar nossas fonte gratuitamente rsrs [ -> https://fonts.google.com/]
 ** expo install expo-font @expo-google-fontes/poppins
 ** expo install expo-app-loading => para lidar com carregamento no expo de forma vamos dizer amigavel rs.
+
+## VAMOS TRABLHAR COM DENSIDADE DE PIX DE UM FORMA AMIGAVEL
+
+\*\*yarn add react-native-responsive-fontsize
+
+# PARA TRABALHA TELA IPHINE
+
+yarn add react-native-iphone-x-helper
