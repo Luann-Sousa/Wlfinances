@@ -39,8 +39,9 @@ dentro dela cria outra pasta chamada Styles e sim dentro dela ficará seu codigo
 ** expo install expo-font @expo-google-fontes/poppins
 ** expo install expo-app-loading => para lidar com carregamento no expo de forma vamos dizer amigavel rs.
 
-## VAMOS TRABLHAR COM DENSIDADE DE PIX DE UM FORMA AMIGAVEL
+## Desmistificando a densidade de pixel!
 
+A densidade de pixels normalmente é chamada de PPI (Pixels Per Inch, Pixels por polegada).Quanto maior o PPI, mais detalhes aparecem na imagem. O aplicativo Densidade de pixels permite manipular diferentes parâmetros e saber como eles afetam a densidade de pixels.
 \*\*yarn add react-native-responsive-fontsize
 
 # PARA TRABALHA TELA IPHINE
