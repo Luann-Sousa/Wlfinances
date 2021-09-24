@@ -47,3 +47,11 @@ A densidade de pixels normalmente é chamada de PPI (Pixels Per Inch, Pixels por
 # PARA TRABALHA TELA IPHINE
 
 yarn add react-native-iphone-x-helper
+
+## TRABALHANDO COM COMPONENTS NATIVO DA NOSSA APLICACAO
+
+Gesture Handler tem como objetivo substituir o sistema de toque integrado do React Native, chamado Gesture Responder System .
+
+A motivação para construir esta biblioteca foi abordar as limitações de desempenho do sistema Gesture Responder do React Native e fornecer mais controle sobre os componentes nativos integrados que podem lidar com gestos. Recomendamos esta palestra de Krzysztof Magiera, na qual ele explica problemas com o sistema de resposta.
+
+## React-Hooks-Form
