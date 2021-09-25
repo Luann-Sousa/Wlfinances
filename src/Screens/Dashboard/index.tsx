@@ -10,11 +10,12 @@ import {
   User,
   UserGreeting,
   UserName,
+  LougoutButton,
   Icon,
   HighlightCards,
   Transactions,
   Title,
-  TransactionsList
+  TransactionsList,
 
 } from './styles';
 //interface data
@@ -57,6 +58,9 @@ const data: DataListProps[] =[{
   },
   date:"21/09/2021"
 }];
+
+//tipagem BorderlessButton
+
   return(
     <Container>
       <Header>
@@ -69,7 +73,9 @@ const data: DataListProps[] =[{
             <UserName>$Valor</UserName>
           </User>
         </UserInfo>
-        <Icon name="power"/>
+      <LougoutButton onPress={ ()=> {}}>
+         <Icon name="power"/>
+      </LougoutButton>
       </UserWrapper>
       </Header>
     
@@ -99,9 +105,9 @@ const data: DataListProps[] =[{
           <Transactions>
             <Title>Listagem</Title>
             <TransactionsList 
-              data={data}
-              keyExtractor={ item => item.id}
-              renderItem={ ({ item })=> <TransactionCard data={item}/>} 
+              data={ data }
+              keyExtractor={ item => item.id }
+              renderItem={ ({ item })=> <TransactionCard data={ item }/>} 
             />
          
           </Transactions>

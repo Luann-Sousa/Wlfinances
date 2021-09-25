@@ -55,3 +55,12 @@ Gesture Handler tem como objetivo substituir o sistema de toque integrado do Rea
 A motivação para construir esta biblioteca foi abordar as limitações de desempenho do sistema Gesture Responder do React Native e fornecer mais controle sobre os componentes nativos integrados que podem lidar com gestos. Recomendamos esta palestra de Krzysztof Magiera, na qual ele explica problemas com o sistema de resposta.
 
 ## React-Hooks-Form
+
+npm install @hookform/resolvers yup
+
+## NAVEGAÇÕES ENTRE TELAS
+
+https://reactnavigation.org/
+
+1*yarn add @react-navigation/native
+3*yarn add @react-navigation/bottom-tabs
