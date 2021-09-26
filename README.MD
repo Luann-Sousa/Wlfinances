@@ -47,3 +47,47 @@ A densidade de pixels normalmente é chamada de PPI (Pixels Per Inch, Pixels por
 # PARA TRABALHA TELA IPHINE
 
 yarn add react-native-iphone-x-helper
+
+## TRABALHANDO COM COMPONENTS NATIVO DA NOSSA APLICACAO
+
+Gesture Handler tem como objetivo substituir o sistema de toque integrado do React Native, chamado Gesture Responder System .
+
+A motivação para construir esta biblioteca foi abordar as limitações de desempenho do sistema Gesture Responder do React Native e fornecer mais controle sobre os componentes nativos integrados que podem lidar com gestos. Recomendamos esta palestra de Krzysztof Magiera, na qual ele explica problemas com o sistema de resposta.
+
+## React-Hooks-Form
+
+npm install @hookform/resolvers yup
+
+## NAVEGAÇÕES ENTRE TELAS
+
+https://reactnavigation.org/
+
+1*yarn add @react-navigation/native
+3*yarn add @react-navigation/bottom-tabs
+
+## ASYNC STORAGE
+
+- Hoje iremos aprender o nossa ferramenta AsyncStorage, para que ela serve ? então podemos dizer que o AsyncStorage
+
+* seria para voce está persistindo ( armazenandon ) os dados no dispositivo do úsuario.
+
+- O AsyncStorage e uma ferramenta com ótima estrategia de armazenamento, quando sua aplicação não tem muitas regras -e relacionamento envolvido, pois o sistema de armazenamento e simples e baseado em "CHAVE E VALOR"( key-value)
+  -assicrono e persistente. Isso e uma estragia ótima comparada Armazenamento no estado, pois os dados que estão armazenados nos estados ele ficam ali apenas em tempo execução da aplicação.
+
+1\* EXEMPLO DE COMO O ASYNC STORAGE FUNCIONA
+
+- ele sempre amarzenara seu dados usando uma estrutura parecida com json podmeos dizer asim "chave_value"
+  -colecao_key => nome da colecao , uma cois bem usada, quando voce quer buscar, criar ou ate deletar algo voce tem que ter essa chave. Voce pergunta mais por que preciso dessa chave ? então podemos dizer que essa chave e a indentificacao da colecao que voce deseja esta querendo buscar, criar ou ate deletar dados simples assim.
+
+@gofinances:transactions
+[
+{
+chave: valor,
+chave: valor,
+}
+]
+
+\*quando devemos criar um colecao no dispositivo do usuario seria uma boa pratica criar assim ..
+
+1\* https://docs.expo.dev/versions/latest/sdk/async-storage/
+-expo install @react-native-async-storage/async-storage

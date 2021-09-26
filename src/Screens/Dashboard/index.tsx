@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { HighlightCard } from "../../Components/HighlightCard";
 import { TransactionCard,  TransactionCardProps } from "../../Components/TransactionCard";
 import {
@@ -10,53 +11,34 @@ import {
   User,
   UserGreeting,
   UserName,
+  LougoutButton,
   Icon,
   HighlightCards,
   Transactions,
   Title,
-  TransactionsList
+  TransactionsList,
 
 } from './styles';
 //interface data
 export interface DataListProps extends TransactionCardProps{
   id: string;
 };
-export function Dashboard(){
+export function Dashboard(){ 
+ const datakey = '@wlfinances:transactions';
+ const [ data, setData ] = useState<DataListProps[]>();
+
+ async function loadingTransactions(){
+  const response = await AsyncStorage.getItem(datakey);
+  const transactions = response ? JSON.parse(response): [];
+  setData(transactions);
+ };
  
-//tipos card
-const data: DataListProps[] =[{
-  id: '1',
-  type: 'positive',
-  title:"Desenvolvimento de Apps",
-  amount:"R$ 12.00,00",
-  category:{
-      name: "Vendas",
-      icon: 'dollar-sign'
-  },
-  date:"03/09/2021"
-},
-{
-  id: '2',
-  type: 'negative',
-  title:"Hambugueria Erli ",
-  amount:"R$25,00",
-  category:{
-      name: "Alimentação",
-      icon: 'coffee'
-  },
-  date:"16/09/2021"
-},
-{
-  id: '3',
-  type: 'negative',
-  title:"Aluguel da casa",
-  amount:"R$ 450,00",
-  category:{
-      name: "Saídas",
-      icon: 'shopping-bag'
-  },
-  date:"21/09/2021"
-}];
+ useEffect( ()=> {
+  loadingTransactions()
+ }, []);
+
+//tipagem BorderlessButton
+
   return(
     <Container>
       <Header>
@@ -69,7 +51,9 @@ const data: DataListProps[] =[{
             <UserName>$Valor</UserName>
           </User>
         </UserInfo>
-        <Icon name="power"/>
+      <LougoutButton onPress={ ()=> {}}>
+         <Icon name="power"/>
+      </LougoutButton>
       </UserWrapper>
       </Header>
     
@@ -99,12 +83,13 @@ const data: DataListProps[] =[{
           <Transactions>
             <Title>Listagem</Title>
             <TransactionsList 
-              data={data}
-              keyExtractor={ item => item.id}
-              renderItem={ ({ item })=> <TransactionCard data={item}/>} 
+              data={ data }
+              keyExtractor={ item => item.id }
+              renderItem={ ({ item })=> <TransactionCard data={ item }/>} 
             />
          
           </Transactions>
     </Container>
+  
   );
 };
