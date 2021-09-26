@@ -109,12 +109,11 @@ export function Register(){
           const transactions = await AsyncStorage.getItem(datakey);
           console.log(JSON.parse(transactions!))
         };
-        loaDingDate();
-          // async function loadRemoveAlll(){
-        //   const transactions = await AsyncStorage.removeItem(datakey);
-        //   console.log(transactions)
-        // };
-        // loadRemoveAlll();
+        async function removeData(){
+          const transactions = await AsyncStorage.removeItem(datakey);
+          console.log(transactions)
+        };
+        removeData();
     },[]);
   return(
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}> 
