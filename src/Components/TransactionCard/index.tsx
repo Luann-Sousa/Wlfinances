@@ -19,7 +19,7 @@ import {
  //interface do nosso TransactionCard
  export interface TransactionCardProps{
     type: 'positive'| 'negative';
-    title: string;
+    name: string;
     amount: string;
     category: Categoryy;
     date: string;
@@ -33,7 +33,7 @@ import {
 export function TransactionCard({ data }: Props){
   return(
     <Container>
-      <Title>{ data.title }</Title>
+      <Title>{ data.name }</Title>
       <Amount type={data.type}>
          { data.type === 'negative' && '- '}
          { data.amount }
