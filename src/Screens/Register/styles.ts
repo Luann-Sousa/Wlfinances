@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   background-color: ${( {theme})=> theme.colors.background_color};
   flex: 1;
 `;
