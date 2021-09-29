@@ -1,19 +1,18 @@
 import React from 'react';
-import { RectButtonProps } from 'react-native-gesture-handler';
-
+// import { RectButtonProps } from 'react-native-gesture-handler';
+import { TouchableOpacityProps } from 'react-native';
 //tipagen do button com interface
-interface Props extends RectButtonProps {
+interface Props extends TouchableOpacityProps {
   title: string;
-  onPress: ()=> void;
 };
 
 import { 
   Container,
   Title
 } from './styles';
-export function Buttton({ title, onPress, ...rest}: Props){
+export function Buttton({ title, ...rest}: Props){
   return(
-    <Container onPress={onPress} {...rest}>
+    <Container  {...rest}>
       <Title>{title}</Title>
     </Container>
   );

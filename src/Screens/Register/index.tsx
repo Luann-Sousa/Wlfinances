@@ -52,7 +52,7 @@ export function Register(){
   const datakey = '@wlfinances:transactions';
 
   //function sabe o tipo do button
-  function handleTransactionsTypesSelect(type: 'up' | 'down'){
+  function handleTransactionsTypesSelect(type: 'positive' | 'negative'){
     setTransactionType(type);
   };
 
@@ -77,7 +77,7 @@ export function Register(){
         id: String(uuid.v4()),
         name: form.name,
         amount: form.amount,
-        transactionType,
+        type: transactionType,
         category: category.key,
         date: new Date()
       };
@@ -109,12 +109,15 @@ export function Register(){
           const transactions = await AsyncStorage.getItem(datakey);
           console.log(JSON.parse(transactions!))
         };
-        async function removeData(){
-          const transactions = await AsyncStorage.removeItem(datakey);
-          console.log(transactions)
-        };
-        removeData();
+        loaDingDate()
+        // async function removeData(){
+        //   const transactions = await AsyncStorage.removeItem(datakey);
+        //   console.log(transactions)
+        // };
+        // removeData();
     },[]);
+  
+
   return(
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}> 
       <Container>
@@ -143,14 +146,14 @@ export function Register(){
                 <TransactionTypeButton 
                    type="up"
                    title="Income"
-                   onPress={()=> handleTransactionsTypesSelect('up')}
-                   isActive={transactionType === 'up'}
+                   onPress={()=> handleTransactionsTypesSelect('positive')}
+                   isActive={transactionType === 'positive'}
                 />
                 <TransactionTypeButton 
                   type="down"
                   title="Outcome"
-                  onPress={()=> handleTransactionsTypesSelect('down')}
-                  isActive={transactionType === 'down'}
+                  onPress={()=> handleTransactionsTypesSelect('negative')}
+                  isActive={transactionType === 'negative'}
                 />
               </TransactionTypes>
               <CategorySelectButton 
@@ -161,7 +164,8 @@ export function Register(){
 
           <Buttton 
             onPress={handleSubmit(handleRegisterValue)}
-            title="Enviar"/>
+            title="Enviar"
+           />
        </Form>
        <Modal visible={ categoryModalOpen }>
          <CategorySelect 

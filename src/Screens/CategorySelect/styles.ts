@@ -33,6 +33,7 @@ export const Title = styled.Text`
 export const Category = styled.TouchableOpacity<CategoryProps>`
   width: 100%;
   padding: ${RFValue(15)}px;
+  margin: 10px;
 
   flex-direction: row;
   align-items: center;
