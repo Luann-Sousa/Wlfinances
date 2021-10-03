@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { ActivityIndicator, Text } from "react-native";
 import { useFocusEffect } from '@react-navigation/native';
+import { useTheme } from 'styled-components';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { HighlightCard } from "../../Components/HighlightCard";
 import { TransactionCard,  TransactionCardProps } from "../../Components/TransactionCard";
@@ -18,6 +20,7 @@ import {
   Transactions,
   Title,
   TransactionsList,
+  LoadContainer,
 
 } from './styles';
 //interface data
@@ -28,6 +31,7 @@ export interface DataListProps extends TransactionCardProps{
 //interface higlightDateProps
 interface HighlightDataProps{
   total: string;
+  lastTransaction : string;
 };
 
 //interface higlightDate
@@ -37,11 +41,24 @@ interface HighlightData{
   toti: HighlightDataProps;
 }
 export function Dashboard(){ 
- const datakey = '@wlfinances:transactions';
+ const [isloading, setIsloading] = useState(true)
  const [ transactions, setTransanctions ] = useState<DataListProps[]>([]);
  const [ highlightData, setHighlightDate ] = useState({} as HighlightData )
 
+ const thema = useTheme();
+ function getLastTransactionDate(
+  collection: DataListProps[],
+  type: 'positive' | 'negative'
+){
+  const lastTransaction = new Date(
+  Math.max.apply(Math, collection
+  .filter(transaction => transaction.type === type)
+  .map(transaction => new Date(transaction.date).getTime())))
+
+  return `${lastTransaction.getDate()} de ${lastTransaction.toLocaleString('pt-BR', { month: 'long' })}`;
+}
  async function loadingTransactions() {
+   const datakey = '@wlfinances:transactions';
    const response = await AsyncStorage.getItem(datakey);
    const transactions = response ? JSON.parse(response) : [];
    let entriesSTotal = 0;
@@ -72,28 +89,37 @@ export function Dashboard(){
     }
    });
    setTransanctions(formatTransaction);
+   const lastTransactionEntries = getLastTransactionDate(transactions, 'positive');
+   const lastTransactionExpensives = getLastTransactionDate(transactions, 'negative');
+   const totalInterval = `01 a ${lastTransactionEntries}`
    const toti = entriesSTotal - expensiveTotal;
    setHighlightDate({
     entries:{
       total: entriesSTotal.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
-      })
+      }),
+      lastTransaction: `Útilma entrada ${lastTransactionEntries}`,
     } ,
     expensives:{
        total: expensiveTotal.toLocaleString('pt-BR', {
          style: 'currency',
          currency: 'BRL'
-       })
+       }),
+       lastTransaction: `Útilma saida ${lastTransactionExpensives}`,
      },
+     
      toti:{
       total: toti.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
-      })
+        
+      }),
+      lastTransaction: totalInterval,
     },
      
    })
+  //  setIsloading(false);
  };
 
 useEffect( ()=> {
@@ -108,6 +134,8 @@ useFocusEffect(useCallback( ()=> {
 
   return(
     <Container>
+      
+        <>
       <Header>
       <UserWrapper>
         <UserInfo>
@@ -129,7 +157,7 @@ useFocusEffect(useCallback( ()=> {
             type="up"
             title="Entrada"
             amount={highlightData.entries?.total}
-            lastTransaction="Última entrada dia 23 de setembro"
+            lastTransaction={highlightData.entries?.lastTransaction}
             
 
           />
@@ -137,13 +165,13 @@ useFocusEffect(useCallback( ()=> {
             type="down"
             title="Saídas"
             amount={highlightData.expensives?.total}
-            lastTransaction="Última Saída dia 01 de setembro"
+            lastTransaction={highlightData.expensives?.lastTransaction}
           />
           <HighlightCard 
             type="total"
             title="Total"
             amount={highlightData.toti?.total}
-            lastTransaction="01 á 26 de setembro"
+            lastTransaction={highlightData.toti?.lastTransaction}
             />
       </HighlightCards>
     
@@ -156,6 +184,8 @@ useFocusEffect(useCallback( ()=> {
             />
          
           </Transactions>
+          </>
+    
     </Container>
   
   );

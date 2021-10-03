@@ -91,3 +91,10 @@ chave: valor,
 
 1\* https://docs.expo.dev/versions/latest/sdk/async-storage/
 -expo install @react-native-async-storage/async-storage
+
+## PARA TRABALARMOS COM GRAFICO VAMOS USA UMA LIBE CHAMA VicotryPie
+
+yarn add add victory-native
+yarn add react-native-svg
+https://formidable.com/open-source/victory/docs/victory-pie/
+Victory é um ecossistema opinativo, mas totalmente substituível, de componentes React combináveis ​​para a construção de visualizações de dados interativos. O tutorial a seguir explica como configurar um gráfico básico. Para as próximas etapas, consulte nossas seções de Perguntas frequentes e Galeria . Para exemplos mais avançados, verifique nossos guias .
