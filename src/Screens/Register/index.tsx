@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigation  } from '@react-navigation/native';
 import { Keyboard, Modal, TouchableWithoutFeedback, Alert } from 'react-native';
 import * as Yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
 import uuid from 'react-native-uuid';
-import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Buttton } from '../../Components/Forms/Button';
 import { CategorySelectButton } from '../../Components/Forms/CategorySelectButton';
@@ -31,8 +31,12 @@ const schema = Yup.object().shape({
   name: Yup.string().required('Nome é obrigatório'),
   amount: Yup.number().typeError('Informe um valor númerico').positive('O valor não pode ser negativo').required('O valor é obrigatório')
 });
+//tipagem rotas
+import { RootBottomTabParamList } from '../../Routes/app.routes';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+
+type dashboardScrenProp = BottomTabNavigationProp<RootBottomTabParamList, 'Dashboard'>
 export function Register(){
-  const navigation = useNavigation();
   const [ transactionType, setTransactionType] = useState('');
   const [ categoryModalOpen, setCategoryModalOpen ] = useState(false);
   const [ category, setCategory ] = useState({
@@ -50,7 +54,7 @@ export function Register(){
   });
   //chave que o async storage esta usando na coletions
   const datakey = '@wlfinances:transactions';
-
+  const navigation = useNavigation<dashboardScrenProp>()
   //function sabe o tipo do button
   function handleTransactionsTypesSelect(type: 'positive' | 'negative'){
     setTransactionType(type);
@@ -97,6 +101,7 @@ export function Register(){
         key: '',
         name: ''
       });
+      navigation.navigate('Dashboard')
       
     } catch (error) {
       console.log(error);

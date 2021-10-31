@@ -21,6 +21,9 @@ import {
   Title,
   TransactionsList,
   LoadContainer,
+  WrapperNotFoundListing,
+  TitleListing,
+
 
 } from './styles';
 //interface data
@@ -177,12 +180,21 @@ useFocusEffect(useCallback( ()=> {
     
           <Transactions>
             <Title>Listagem</Title>
+           
+            { transactions ?   
+
             <TransactionsList 
               data={ transactions }
               keyExtractor={ item => item.id }
               renderItem={ ({ item })=> <TransactionCard data={ item }/>} 
-            />
-         
+            /> 
+            : 
+             <WrapperNotFoundListing>
+              <TitleListing>
+                Você não possui nenhuma infoarção cadastrada em nosso  sistema...
+              </TitleListing>
+            </WrapperNotFoundListing> }
+          
           </Transactions>
           </>
     

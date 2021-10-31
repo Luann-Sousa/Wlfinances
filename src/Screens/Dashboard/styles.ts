@@ -93,9 +93,16 @@ export const TransactionsList = styled(
 })`
   
 `;
-
 export const LoadContainer = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+`;
+
+export const WrapperNotFoundListing = styled.View`
+`;
+export const TitleListing = styled.Text`
+  font-family: ${( { theme})=> theme.fonts.regular};
+  font-size: ${RFValue(16)}px;
+  color: ${( { theme } )=> theme.colors.title};
 `;

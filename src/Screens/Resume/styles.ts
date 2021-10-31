@@ -21,6 +21,7 @@ export const Title = styled.Text`
   color: ${( { theme})=> theme.colors.shape};
 `;
 export const Content = styled.ScrollView`
+  padding: 24px;
 
 `;
 export const ChartContainer = styled.View`

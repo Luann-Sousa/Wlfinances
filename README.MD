@@ -98,3 +98,66 @@ yarn add add victory-native
 yarn add react-native-svg
 https://formidable.com/open-source/victory/docs/victory-pie/
 Victory é um ecossistema opinativo, mas totalmente substituível, de componentes React combináveis ​​para a construção de visualizações de dados interativos. O tutorial a seguir explica como configurar um gráfico básico. Para as próximas etapas, consulte nossas seções de Perguntas frequentes e Galeria . Para exemplos mais avançados, verifique nossos guias .
+
+## PARA DEIXAR NOSSA APLICAÇAO PERFOMATICA E BOM USAR O SVG
+
+**por padrão o react-native nao consegue lidar com SVG em seu processor de biulder com a exeção do react-vector-icon
+que por padrão ja usa o svg tranquilamente
+--https://github.com/kristerkari/react-native-svg-transformer
+yarn add --dev react-native-svg-transformer
+**lembre-se apos istaldo precisa fazer uma configuração no nosso metro.js segue abaixo
+metro.config.js:
+
+// expo v40:
+const { getDefaultConfig } = require("@expo/metro-config");
+
+// expo v41:
+// remove the @ (see: https://blog.expo.io/expo-sdk-41-12cc5232f2ef)
+const { getDefaultConfig } = require("expo/metro-config");
+
+module.exports = (async () => {
+const {
+resolver: { sourceExts, assetExts }
+} = await getDefaultConfig(\_\_dirname);
+return {
+transformer: {
+babelTransformerPath: require.resolve("react-native-svg-transformer")
+},
+resolver: {
+assetExts: assetExts.filter(ext => ext !== "svg"),
+sourceExts: [...sourceExts, "svg"]
+}
+};
+})();
+
+## FAZENDO LOGIN COM A GOOGLE IREMOS NA DOC DO EXPO
+
+Autenticação
+O Expo pode ser usado para fazer login em muitos provedores populares no iOS, Android e web! A maioria desses guias utiliza a AuthSessionAPI JS pura , consulte esses documentos para obter mais informações sobre a API.
+Aqui estão algumas regras
+https://docs.expo.dev/guides/authentication/
+
+\*\* VAMOS UTILIZAR UM TIPO DE CONEXÃO CHAMADA O Auth que com o tipo de conexao que noS permite fazer autheticaçao com a GOOGLE OU COM A APPLE PARA OBETER AS INFORMAÇÃOES DO USUARIO EXEMPLEO "nome, email, avatar ....."
+
+\*\*NO CASO DA GOOGLE PRECISAMOS CRIAR UM APLICATIVO DENTRO DO CTP => CLOUD PLATORFORM PARA PEGAMOS ALGUMAS KEY QUE IREMOS PRECISAR PARA AUTHENTICA COM SEVIRDO DA GOOGLE
+https://console.cloud.google.com/apis/credentials?pli=1
+
+Cliente OAuth criado
+A ID do cliente e o secret estão sempre disponíveis em "Credenciais" na página "APIs e serviços".
+O OAuth é limitado a 100 logins de escopo confidencial até a verificação da tela de consentimento do OAuth. O processo de verificação pode levar vários dias.
+669694730873-6hrql529g0523db9j60e0km80654tbbg.apps.googleusercontent.com
+Seu ID de cliente
+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
+
+**\*\***documentaçao de authenticacao
+https://developers.google.com/identity/protocols/oauth2
+
+\*\*\*precisa instalar essa dependencia
+expo-randomé uma dependência de mesmo nível e deve ser instalada junto expo-auth-session.
+
+## PARA LIRDAMOS COM DADOS SENSIVEIS DE NOSSA APLICACAO IREMOS USAR A LIB DO BABEL
+
+\*\*yarn add babel-plugin-inline-dotenv
+babel-plugin-inline-dotenv
+Carregue seu .envarquivo e substitua process.env.MY_VARIABLEpelo valor que você definiu.
+Na verdade, ele substitui process.env.MY_VARIABLEpor:

@@ -8,7 +8,14 @@ import { Register } from '../Screens/Register';
 import { Resume } from '../Screens/Resume';
 import { Platform } from 'react-native';
 
-const { Navigator, Screen }= createBottomTabNavigator();
+export type RootBottomTabParamList = {
+  Dashboard: undefined,
+  Register: undefined,
+  Resume: undefined;
+
+};
+const { Navigator, Screen }= createBottomTabNavigator<RootBottomTabParamList>();
+
 
 export  function AppRoutes() {
   //usando meu thema global
@@ -17,6 +24,7 @@ export  function AppRoutes() {
   
       <Navigator
         screenOptions={{
+          headerShown: false,
           tabBarActiveTintColor: theme.colors.secudary,
           tabBarInactiveTintColor: theme.colors.text,
           tabBarLabelPosition: 'beside-icon',
@@ -27,7 +35,7 @@ export  function AppRoutes() {
         }}
       >
         <Screen 
-          name="Listagem" 
+          name="Dashboard" 
           component={ Dashboard }
           options={{
             tabBarIcon: (({ size, color})=>(
@@ -40,7 +48,7 @@ export  function AppRoutes() {
           }}
         />
         <Screen 
-          name="Cadastrar" 
+          name="Register" 
           component={ Register } 
           options={{
             tabBarIcon: (({ size, color})=>(
@@ -52,7 +60,7 @@ export  function AppRoutes() {
             )),
           }}
         />
-        <Screen name="Resumo" 
+        <Screen name="Resume" 
           component={ Resume } 
           options={{
             tabBarIcon: (({ size, color})=>(

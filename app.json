@@ -2,10 +2,12 @@
   "expo": {
     "name": "wlfinances",
     "slug": "wlfinances",
+    "scheme": "wlfinances",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "controle finances"
   },
   "name": "wlfinances"
 }
