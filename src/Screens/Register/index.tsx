@@ -34,9 +34,11 @@ const schema = Yup.object().shape({
 //tipagem rotas
 import { RootBottomTabParamList } from '../../Routes/app.routes';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { useAuth } from '../../Hooks/auth';
 
 type dashboardScrenProp = BottomTabNavigationProp<RootBottomTabParamList, 'Dashboard'>
 export function Register(){
+  const { user } = useAuth();
   const [ transactionType, setTransactionType] = useState('');
   const [ categoryModalOpen, setCategoryModalOpen ] = useState(false);
   const [ category, setCategory ] = useState({
@@ -53,7 +55,7 @@ export function Register(){
     resolver: yupResolver(schema)
   });
   //chave que o async storage esta usando na coletions
-  const datakey = '@wlfinances:transactions';
+  const datakey = `@wlfinances:transactions_user:${user.id}`;
   const navigation = useNavigation<dashboardScrenProp>()
   //function sabe o tipo do button
   function handleTransactionsTypesSelect(type: 'positive' | 'negative'){

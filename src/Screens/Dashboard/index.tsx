@@ -26,6 +26,7 @@ import {
 
 
 } from './styles';
+import { useAuth } from "../../Hooks/auth";
 //interface data
 export interface DataListProps extends TransactionCardProps{
   id: string;
@@ -49,6 +50,7 @@ export function Dashboard(){
  const [ highlightData, setHighlightDate ] = useState({} as HighlightData )
 
  const thema = useTheme();
+ const { signOut, user } = useAuth();
  function getLastTransactionDate(
   collection: DataListProps[],
   type: 'positive' | 'negative'
@@ -61,9 +63,10 @@ export function Dashboard(){
   return `${lastTransaction.getDate()} de ${lastTransaction.toLocaleString('pt-BR', { month: 'long' })}`;
 }
  async function loadingTransactions() {
-   const datakey = '@wlfinances:transactions';
+   const datakey = `@wlfinances:transactions_user:${user.id}`;
    const response = await AsyncStorage.getItem(datakey);
    const transactions = response ? JSON.parse(response) : [];
+   console.log("jjj",transactions)
    let entriesSTotal = 0;
    let expensiveTotal = 0;
    const formatTransaction: DataListProps[] = transactions.map((item: DataListProps)=>{
@@ -143,13 +146,13 @@ useFocusEffect(useCallback( ()=> {
       <UserWrapper>
         <UserInfo>
           <Photo 
-            source={{ uri: 'https://avatars.githubusercontent.com/u/78818354?v=4'}}/>
+            source={{ uri: user.avatar}}/>
           <User>
             <UserGreeting>Óla, </UserGreeting>
-            <UserName>$Valor</UserName>
+            <UserName numberOfLines={1}>{ user.name }</UserName>
           </User>
         </UserInfo>
-      <LougoutButton onPress={ ()=> {}}>
+      <LougoutButton onPress={ ()=> signOut()}>
          <Icon name="power"/>
       </LougoutButton>
       </UserWrapper>
@@ -181,20 +184,21 @@ useFocusEffect(useCallback( ()=> {
           <Transactions>
             <Title>Listagem</Title>
            
-            { transactions ?   
+            { 
+              transactions.length > 0 ? 
 
-            <TransactionsList 
-              data={ transactions }
-              keyExtractor={ item => item.id }
-              renderItem={ ({ item })=> <TransactionCard data={ item }/>} 
-            /> 
-            : 
+              <TransactionsList 
+                data={ transactions }
+                keyExtractor={ item => item.id }
+                renderItem={ ({ item })=> <TransactionCard data={ item }/>} 
+              /> 
+            :
              <WrapperNotFoundListing>
               <TitleListing>
-                Você não possui nenhuma infoarção cadastrada em nosso  sistema...
+                Você não possui nenhuma informação cadastrada nosso  sistema...
               </TitleListing>
-            </WrapperNotFoundListing> }
-          
+            </WrapperNotFoundListing> 
+          }
           </Transactions>
           </>
     

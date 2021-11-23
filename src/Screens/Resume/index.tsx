@@ -19,6 +19,7 @@ import {
   Month, 
 } from './styles';
 import { categories } from '../../Utils/categories';
+import { useAuth } from '../../Hooks/auth';
 interface TransactionData{
   type: 'positive'| 'negative';
   name: string;
@@ -35,7 +36,7 @@ interface CategoryData{
   percent: string;
 }
 export function Resume(){
-  const [isloading, setIsLoading] = useState(true)
+  const { user} = useAuth();
   const [totalByCategories, setTotalByCategories] = useState<CategoryData[]>([]);
   const [ selectedDate, setSelectedDate] = useState(new Date());
 
@@ -51,7 +52,7 @@ export function Resume(){
   };
   const theme = useTheme();
   async function loadDate(){
-      const datakey = '@wlfinances:transactions';
+      const datakey = `@wlfinances:transactions_user:${user.id}`;
     const response = await AsyncStorage.getItem(datakey);
     const responseFormated =  response ? JSON.parse(response) : [];
     const expensives = responseFormated

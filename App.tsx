@@ -11,9 +11,8 @@ import {
 } from '@expo-google-fonts/poppins';
 
 import theme from './src/Global/Styles/theme';
-import { SignIn } from './src/Screens/SignIn';
 import { Routes } from './src/Routes/index.routes';
-import { AuthProvider } from './src/Hooks/auth';
+import { AuthProvider, useAuth } from './src/Hooks/auth';
 
 export default function App() {
   const [ fontsLoaded ] = useFonts({
@@ -21,8 +20,9 @@ export default function App() {
     Poppins_500Medium,
     Poppins_700Bold,
   });
+  const { userStorageLoading } = useAuth();
   //fonts false 
-  if(!fontsLoaded){
+  if(!fontsLoaded || userStorageLoading){
     return <AppLoading />
   };
   return ( 

@@ -161,3 +161,6 @@ expo-randomé uma dependência de mesmo nível e deve ser instalada junto expo-a
 babel-plugin-inline-dotenv
 Carregue seu .envarquivo e substitua process.env.MY_VARIABLEpelo valor que você definiu.
 Na verdade, ele substitui process.env.MY_VARIABLEpor:
+
+Os aplicativos financeiros podem te ajudar a fazer a gestão dos seus investimentos e gastos de maneira mais fácil. 
+Considerando que, de acordo com uma pesquisa feita pelo SPC Brasil e pela Confederação Nacional de Dirigentes Lojistas (CNDL), 58% dos entrevistados nunca ou apenas às vezes dedicam tempo ao controle financeiro, por isso estou lançando um app que pode te ajudar (e muito) no controle financeiro.#$Valor

@@ -21,6 +21,8 @@ interface IAuthContextData {
   user: User;
   signInWithGoogle(): Promise<void>;
   signInWhitApple(): Promise<void>;
+  signOut(): Promise<void>
+  userStorageLoading: boolean;
   
 };
 //tipagem dos dados do usuario do google
@@ -40,7 +42,8 @@ function AuthProvider({ children }: AuthProviderProps ){
   //   name: "Luann",
   //   email: "luann2021@gmail.com.b"
   // };
-  const [ user, setuserData ] = useState<User>({} as User)
+  const [ user, setuserData ] = useState<User>({} as User);
+  const [ userStorageLoading, setUserStorageLoading ] = useState(true);
   const datakey = '@wlfinances:user';
   //fazendo authenticacao com a GOOGLE
   async function signInWithGoogle(){
@@ -80,8 +83,7 @@ function AuthProvider({ children }: AuthProviderProps ){
       // throw new Error(error)
       console.log(error)
     }
-  };
-
+  }
   async function signInWhitApple(){
     try {
       const credential = await AppleAuthentication.signInAsync({
@@ -115,11 +117,18 @@ function AuthProvider({ children }: AuthProviderProps ){
     };
     loadingSorageDate()
   },[])
+
+  async function signOut(){
+    setuserData( {} as User)
+    await AsyncStorage.removeItem(datakey);
+  }
   return(
    <AuthContext.Provider value={{
      user,
      signInWithGoogle,
-     signInWhitApple
+     signInWhitApple,
+     signOut,
+     userStorageLoading,
    }}>
       { children }
    </AuthContext.Provider>
